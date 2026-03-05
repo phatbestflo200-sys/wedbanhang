@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Giỏ hàng</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#fff0f5;
+padding:40px;
+}
+
+h2{
+color:#ff4d88;
+}
+
+.cart-item{
+background:white;
+padding:12px;
+margin:10px auto;
+width:300px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+button{
+background:#ff4d88;
+color:white;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:6px;
+}
+
+button:hover{
+opacity:0.8;
+}
+
+.total{
+font-size:20px;
+font-weight:bold;
+margin-top:20px;
+}
+
+.order-btn{
+margin-top:20px;
+padding:12px 25px;
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Giỏ hàng của bạn</h2>
+
+<div id="cart"></div>
+
+<div class="total" id="total"></div>
+
+<br>
+
+<button class="order-btn" onclick="order()">Xác nhận đơn</button>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let cartDiv = document.getElementById("cart");
+let totalDiv = document.getElementById("total");
+
+function loadCart(){
+
+cartDiv.innerHTML = "";
+let total = 0;
+
+cart.forEach(function(item,index){
+
+total += item.price;
+
+cartDiv.innerHTML += `
+<div class="cart-item">
+<span>${item.name} - ${item.price}đ</span>
+<button onclick="removeItem(${index})">Xóa</button>
+</div>
+`;
+
+});
+
+totalDiv.innerText = "Tổng tiền: " + total + "đ";
+
+}
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+loadCart();
+
+}
+
+function order(){
+
+if(cart.length === 0){
+alert("Giỏ hàng đang trống");
+return;
+}
+
+alert("Đơn hàng đã gửi, shop sẽ liên hệ!");
+
+localStorage.removeItem("cart");
+
+location.reload();
+
+}
+
+loadCart();
+
+</script>
+
+</body>
+</html>

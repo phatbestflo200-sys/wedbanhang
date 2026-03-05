@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Bột và Kem Nhà Na</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .menu {
+            border-top: 2px solid pink;
+            border-bottom: 2px solid pink;
+        }
+
+        .menu .nav-link {
+            padding: 15px 30px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .menu .nav-link.active,
+        .menu .nav-link:hover {
+            background-color: pink;
+            color: white !important;
+        }
+
+        img {
+            height: 400px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 40px;
+            font-size: 14px;
+            background: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 6px 12px;
+            width: 380px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* CART */
+        .cart {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* LINE */
+        .line {
+            border: none;
+            border-top: 2px solid red;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .menu {
+            border-top: 2px solid pink;
+            border-bottom: 2px solid pink;
+        }
+
+        .menu .nav-link {
+            padding: 15px 30px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .menu .nav-link.active,
+        .menu .nav-link:hover {
+            background-color: pink;
+            color: white !important;
+        }
+
+        .search {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+        }
+
+        .search input {
+            border: none;
+            outline: none;
+            flex: 1;
+        }
+
+        .deltail-btn {
+            display: block;
+            margin-top: 8px;
+            text-align: center;
+            border-radius: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            background: #ffb3d1;
+            color: #b1004d;
+            padding: 8px;
+        }
+
+        .deltail-btn:hover {
+            background: #ff6fae;
+            color: white;
+        }
+
+        .pink-btn {
+            background: linear-gradient(135deg, #ff6fae, #ff3d8e);
+            color: white;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 5px 12px rgba(255, 105, 160, .35);
+            transition: .2s;
+        }
+
+        .pink-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(255, 105, 160, .45);
+        }
+        /* CARRD */
+        .card {
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        /* HIỆU ỨNG BAY LÊN */
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        }
+        /* HIỆU ỨNG ÁNH SÁNG */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            background: linear-gradient
+            (
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.35),
+                transparent
+            );
+            transform: rotate(25deg);
+            transition: 0.6s;
+        }
+
+        .card:hover::before {
+            top: 100%;
+            left: 100%;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transform: scale(1.1);
+        }
+
+        .card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        /* BUTOON TRƯỢT LÊN */
+        .card .d-flex {
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .card:hover .d-flex {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn-dark:hover {
+            background: #ff4d6d;
+            border-color: #ff4d6d;
+            transform: scale(1.05);
+        }
+
+        .btn-outline-primary:hover {
+            background: #0d6efd;
+            color: white;
+        }
+
+        /* TÊN SẢN PHẨM */
+        .chitietbot {
+            color: #ff6fae;
+            text-decoration: none;
+            color: black;
+            transition: all 0.3s;
+        }
+
+        .card:hover .chitietbot {
+            color: #ff4d6d;
+        }
+        .btn {
+            border-radius: 12px;
+        }
+
+        .heloo {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .footer-na {
+            background: #f8f9fb;
+            margin-top: 80px;
+        }
+
+        .footer-logo {
+            height: 120px;
+        }
+
+        .footer-na p,
+        .footer-na li {
+            color: #555;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-list li {
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .footer-list li:hover {
+            color: #e91e63;
+        }
+
+        .social-icon {
+            width: 40px;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-box img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .social-box img:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="toast-box" id="toast"></div>
+    <div class="top-bar">
+        <span>Chào mừng bạn đến với Shop Mỹ Phẩm Nhà Na</span>
+        <span>Hotline: 09134735437</span>
+    </div>
+    <div class="header">
+        <div class="logo">
+            <img src="logonhana.png" alt="">
+        </div>
+        <div class="search-box">
+            <input placeholder="Tìm sản phẩm của bạn" type="text">
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <div id="guestArea">
+            <a href="login.html"><button class="pink-btn">Đăng nhập</button></a>
+            <a href="register.html"><button class="pink-btn">Đăng ký</button></a>
+            <header>
+
+<span id="hello"></span>
+
+<button onclick="logout()">Đăng xuất</button>
+
+</header>
+
+<h2>Sản phẩm</h2>
+
+<div class="product">
+
+<h3>Bột trắng da</h3>
+
+<p>50.000đ</p>
+
+<button onclick="addCart('Bột trắng da',50000)">Thêm giỏ</button>
+
+</div>
+
+<div class="product">
+
+<h3>Kem trắng da</h3>
+
+<p>70.000đ</p>
+
+<button onclick="addCart('Kem trắng da',70000)">Thêm giỏ</button>
+
+</div>
+
+<br><br>
+
+<a href="cart.html">Xem giỏ hàng</a>
+
+        </div>
+    </div>
+    <div>
+        <ul class="nav justify-content-center menu">
+            <li class="nav-item">
+                <a class="nav-link " href="index.html">GIỚI THIỆU</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bot.html">BỘT TRẮNG DA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kem.html">KEM TRẮNG DA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="lienhe.html">LIÊN HỆ</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Sản Phẩm Nổi Bật <br> Mỹ Phẩm Nhà Na</h3>
+
+        <div class="row g-4">
+
+            <!-- SẢN PHẨM 1 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="botthaomoc.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietbotthaomoc.html" class="chitietbot">Bột Thảo Mộc</a>
+                        </h5>
+                        <p class="text-danger fw-bold">45.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100" onclick="addCart('Bột Thảo Mộc')">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SẢN PHẨM 2 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="bottraxanh.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietbottraxanh.html" class="chitietbot">Bột Trà Xanh</a>
+                        </h5>
+                        <p class="text-danger fw-bold">30.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="botcamgao.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietbotcamgao.html" class="chitietbot">Bột Cám Gạo</a>
+                        </h5>
+                        <p class="text-danger fw-bold">25.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="botcamthao.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietbotcamthao.html" class="chitietbot">Bột Cam Thảo</a>
+                        </h5>
+                        <p class="text-danger fw-bold">40.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="bottaoxoan.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietbottaoxoan.html" class="chitietbot">Bột Tảo Xoắn</a>
+                        </h5>
+                        <p class="text-danger fw-bold">70.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="bothoahong.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietbothoahong.html" class="chitietbot">Bột Hoa Hồng</a>
+                        </h5>
+                        <p class="text-danger fw-bold">33.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="kembody.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietkembody.html" class="chitietbot">Kem Body Nhà Na</a>
+                        </h5>
+                        <p class="text-danger fw-bold">120.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-3 col-sm-6">
+                <div class="card h-100 text-center">
+                    <img src="kembodynagna.png" class="card-img-top product-img" alt="">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5>
+                            <a href="chitietkembodynhana.html" class="chitietbot">Kem Nhà Na</a>
+                        </h5>
+                        <p class="text-danger fw-bold">101.000đ / 100g</p>
+
+                        <div class="d-flex gap-2 mt-auto">
+                            <button class="btn btn-outline-primary w-100">
+                                <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-dark w-100">
+                                <i class="fa-solid fa-bolt"></i> Mua ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-na">
+        <div class="container py-5">
+            <div class="row gy-4">
+
+                <!-- LOGO + MÔ TẢ -->
+                <div class="col-lg-3 col-md-6">
+                    <img src="logonhana.png" class="footer-logo mb-3">
+                    <p>
+                        Mỹ phẩm Nhà Na luôn cam kết, đảm bảo bàn giao sản phẩm đạt
+                        chất lượng tối ưu nhất đến tay người dùng.
+                    </p>
+                </div>
+
+                <!-- LIÊN HỆ -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Liên hệ</h5>
+                    <p>Tư vấn dịch vụ: 0969 729 039
+                        <br>
+                        Hỗ trợ sử dụng: 0913 473 547
+                        <br>
+                        Email: myphamnhana237@gmail.com
+                        <br>
+                        7h00 – 22h00 (Thứ 2 – Chủ nhật)
+                    </p>
+                </div>
+
+                <!-- DANH MỤC -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Danh mục</h5>
+                    <ul class="footer-list">
+                        <li>
+                            <a class="heloo" href="bot.html">Bột Trắng Da</a>
+                        </li>
+                        <li>
+                            <a class="heloo" href="kem.html">Kem Trắng Da</a>
+                        </li>
+                        <li>
+                            <a class="heloo" href="chitietbottraxanh.html">Chi Tiết Sản Phẩm</a>
+                        </li>
+                        <li>
+                            <a class="heloo" href="index.html">Giới thiệu</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-3">Liên hệ với chúng tôi</h5>
+                    <p>Luôn cập nhật tất cả các hành động mà chúng tôi đã lưu cho tất cả khách hàng của mình.</p>
+
+                    <div class="d-flex gap-3 mt-3 social-box">
+                        <a href="https://www.facebook.com/kemnangna#" target="_blank">
+                            <img src="image.png" class="social-img">
+                        </a>
+
+                        <a href="https://www.tiktok.com/@vttn_3939?_r=1&_t=ZS-92F2hfFAaLY&fbclid=IwY2xjawPTM09leHRuA2FlbQIxMQBzcnRjBmFwcF9pZAEwAAEeuy-RFAg19dbXNvzF7NyJlDAy1Pdl2U1x82giLI-eYTiP0ao2gw8BfMbCSHI_aem_9PNa8QurP8lQuVlyAyJYFg"
+                            target="_blank">
+                            <img src="image copy.png" class="social-img">
+                        </a>
+
+                        <a href="https://www.instagram.com/tennick" target="_blank">
+                            <img src="ig.png" class="social-img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+
+let user = localStorage.getItem("loggedUser");
+
+let hello = document.getElementById("hello");
+let guestArea = document.getElementById("guestArea");
+
+if(user){
+
+    hello.innerText = "Xin chào " + user;
+
+    guestArea.innerHTML = `
+        <span style="margin-right:10px;font-weight:bold;color:#ff4d8d;">
+            Xin chào ${user}
+        </span>
+
+        <button class="pink-btn" onclick="logout()">Đăng xuất</button>
+    `;
+
+}else{
+
+    guestArea.innerHTML = `
+        <a href="login.html">
+            <button class="pink-btn">Đăng nhập</button>
+        </a>
+
+        <a href="register.html">
+            <button class="pink-btn">Đăng ký</button>
+        </a>
+    `;
+
+}
+
+function logout(){
+
+    localStorage.removeItem("loggedUser");
+
+    location.reload();
+
+}
+
+
+function addCart(name,price){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name:name,
+        price:price
+    });
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    alert("Đã thêm vào giỏ hàng");
+
+}
+
+</script>
+
+
+
+
+</script>
+</body>
+
+</html>

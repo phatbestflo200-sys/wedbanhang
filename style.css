@@ -1,0 +1,157 @@
+.auth-bg {
+  background: linear-gradient(120deg, #ffd1e8, #fff);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 320px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+  text-align: center;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: #ff6fa5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-box {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 300px;
+  animation: zoom .25s;
+}
+
+.popup-box button {
+  margin-top: 15px;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #ff6fa5;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(.6);
+    opacity: 0
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1
+  }
+}
+
+.toast-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff6fa5;
+  color: white;
+  padding: 18px 28px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+  animation: pop .3s;
+}
+
+@keyframes pop {
+  from {
+    transform: translate(-50%, -50%) scale(.7)
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1)
+  }
+}
+
+.toast-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff6fae;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 25px;
+  font-weight: 600;
+  display: none;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+  animation: pop .3s ease;
+}
+
+@keyframes pop {
+  from {
+    transform: translate(-50%, -50%) scale(.8);
+    opacity: 0
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1
+  }
+}
+
+.input-error {
+  border: 2px solid #ff3b7a !important;
+  animation: shake .3s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0)
+  }
+
+  25% {
+    transform: translateX(-5px)
+  }
+
+  50% {
+    transform: translateX(5px)
+  }
+
+  75% {
+    transform: translateX(-5px)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
