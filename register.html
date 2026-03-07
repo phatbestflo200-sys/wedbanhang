@@ -1,85 +1,96 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng ký</title>
-  <style>
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký</title>
 
-    body {
-      background: #ffe8f0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+<style>
 
-    .login-box {
-      background: white;
-      width: 360px;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
 
-    .login-box h2 {
-      margin-bottom: 20px;
-    }
+body{
+background:#ffe8f0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
-    .login-box input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
+.register-box{
+background:white;
+width:380px;
+padding:35px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,0,0,0.08);
+}
 
-    .btn-login {
-      display: block;
-      margin-top: 15px;
-      background: #ff6ea8;
-      color: white;
-      padding: 12px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.register-box h2{
+margin-bottom:25px;
+}
 
-    .btn-login:hover {
-      background: #ff3e8e;
-    }
+.register-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:14px;
+}
 
-    .login-box p {
-      margin-top: 15px;
-    }
+.btn-register{
+width:100%;
+margin-top:15px;
+background:#ff6ea8;
+color:white;
+padding:12px;
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+font-size:16px;
+}
 
-    .login-box p a {
-      color: #ff6ea8;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+.btn-register:hover{
+background:#ff3e8e;
+}
+
+.register-box p{
+margin-top:18px;
+font-size:14px;
+}
+
+.register-box p a{
+color:#ff6ea8;
+text-decoration:none;
+font-weight:bold;
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <div class="box">
+<div class="register-box">
 
 <h2>Đăng ký</h2>
 
 <input id="username" placeholder="Tên đăng nhập">
 
+<input id="email" placeholder="Email">
+
 <input id="password" type="password" placeholder="Mật khẩu">
 
-<button onclick="register()">Đăng ký</button>
+<input id="repassword" type="password" placeholder="Nhập lại mật khẩu">
+
+<button class="btn-register" onclick="register()">Đăng ký</button>
 
 <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
 
@@ -90,10 +101,18 @@
 function register(){
 
 let username=document.getElementById("username").value;
+let email=document.getElementById("email").value;
 let password=document.getElementById("password").value;
+let repassword=document.getElementById("repassword").value;
+
+if(password!==repassword){
+alert("Mật khẩu không khớp");
+return;
+}
 
 let user={
 username:username,
+email:email,
 password:password
 };
 
@@ -108,5 +127,4 @@ window.location.href="login.html";
 </script>
 
 </body>
-
 </html>
