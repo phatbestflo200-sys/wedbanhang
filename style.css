@@ -1,157 +1,130 @@
-.auth-bg {
-  background: linear-gradient(120deg, #ffd1e8, #fff);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
 }
 
-.auth-box {
-  width: 320px;
-  background: white;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
-  text-align: center;
+body{
+background:#ffe8f0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-.auth-box input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+.register-box{
+background:white;
+width:380px;
+padding:35px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,0,0,0.08);
 }
 
-.auth-box button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  background: #ff6fa5;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+.register-box h2{
+margin-bottom:25px;
 }
 
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, .4);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+.register-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:14px;
 }
 
-.popup-box {
-  background: white;
-  padding: 25px 30px;
-  border-radius: 16px;
-  text-align: center;
-  width: 300px;
-  animation: zoom .25s;
+.btn-register{
+width:100%;
+margin-top:15px;
+background:#ff6ea8;
+color:white;
+padding:12px;
+border:none;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+font-size:16px;
 }
 
-.popup-box button {
-  margin-top: 15px;
-  padding: 8px 25px;
-  border: none;
-  border-radius: 20px;
-  background: #ff6fa5;
-  color: white;
-  cursor: pointer;
+.btn-register:hover{
+background:#ff3e8e;
 }
 
-@keyframes zoom {
-  from {
-    transform: scale(.6);
-    opacity: 0
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1
-  }
+.register-box p{
+margin-top:18px;
+font-size:14px;
 }
 
-.toast-box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ff6fa5;
-  color: white;
-  padding: 18px 28px;
-  border-radius: 20px;
-  font-weight: bold;
-  display: none;
-  z-index: 999;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
-  animation: pop .3s;
+.register-box p a{
+color:#ff6ea8;
+text-decoration:none;
+font-weight:bold;
 }
 
-@keyframes pop {
-  from {
-    transform: translate(-50%, -50%) scale(.7)
-  }
+</style>
 
-  to {
-    transform: translate(-50%, -50%) scale(1)
-  }
+</head>
+
+<body>
+
+<div class="register-box">
+
+<h2>Đăng ký</h2>
+
+<input id="username" placeholder="Tên đăng nhập">
+
+<input id="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Mật khẩu">
+
+<input id="repassword" type="password" placeholder="Nhập lại mật khẩu">
+
+<button class="btn-register" onclick="register()">Đăng ký</button>
+
+<p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+
+</div>
+
+<script>
+
+function register(){
+
+let username=document.getElementById("username").value;
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
+let repassword=document.getElementById("repassword").value;
+
+if(password!==repassword){
+alert("Mật khẩu không khớp");
+return;
 }
 
-.toast-box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ff6fae;
-  color: white;
-  padding: 14px 28px;
-  border-radius: 25px;
-  font-weight: 600;
-  display: none;
-  z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-  animation: pop .3s ease;
+let user={
+username:username,
+email:email,
+password:password
+};
+
+localStorage.setItem("user",JSON.stringify(user));
+
+alert("Đăng ký thành công");
+
+window.location.href="login.html";
+
 }
 
-@keyframes pop {
-  from {
-    transform: translate(-50%, -50%) scale(.8);
-    opacity: 0
-  }
+</script>
 
-  to {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1
-  }
-}
-
-.input-error {
-  border: 2px solid #ff3b7a !important;
-  animation: shake .3s;
-}
-
-@keyframes shake {
-  0% {
-    transform: translateX(0)
-  }
-
-  25% {
-    transform: translateX(-5px)
-  }
-
-  50% {
-    transform: translateX(5px)
-  }
-
-  75% {
-    transform: translateX(-5px)
-  }
-
-  100% {
-    transform: translateX(0)
-  }
-}
+</body>
+</html>
